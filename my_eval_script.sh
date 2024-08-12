@@ -23,3 +23,40 @@ python gen_judgment.py --model-list Meta-Llama-3.1-8B --parallel 5
 
 # show scores
 python show_result.py --model-list Meta-Llama-3.1-8B
+
+#llama3 instruct
+## generate answer
+vllm serve /home/lidong1/jianglingjie/LLama-Factory/model_checkpoint/huggingface/Meta-Llama-3.1-8B-Instruct --dtype auto
+python gen_api_answer.py --model /home/lidong1/jianglingjie/LLama-Factory/model_checkpoint/huggingface/Meta-Llama-3.1-8B-Instruct --model-id Meta-Llama-3.1-8B-Instruct --openai-api-base http://localhost:8000/v1 --parallel 50
+
+## generate judgement
+python gen_judgment.py --model-list Meta-Llama-3.1-8B-Instruct --parallel 5
+
+## calculate scores
+python show_result.py --model-list Meta-Llama-3.1-8B-Instruct
+
+
+#llama3 lora
+## generate answer
+vllm serve /mnt/lingjiejiang/textual_aesthetics/model_checkpoint/sft_merge_checkpoints/tulu-lora-sft-llama3-8b-base --dtype auto
+python gen_api_answer.py --model /mnt/lingjiejiang/textual_aesthetics/model_checkpoint/sft_merge_checkpoints/tulu-lora-sft-llama3-8b-base --model-id tulu-v2-8B-sft --openai-api-base http://localhost:8000/v1 --parallel 50
+
+## generate judgement
+python gen_judgment.py --model-list tulu-v2-8B-sft --parallel 5
+
+## calculate scores
+python show_result.py --model-list tulu-v2-8B-sft
+
+#llama3 dpo
+## generate answer
+vllm serve /mnt/lingjiejiang/textual_aesthetics/model_checkpoint/sft_merge_checkpoints/tulu-dpo-llama3-8b-base --dtype auto
+python gen_api_answer.py --model /mnt/lingjiejiang/textual_aesthetics/model_checkpoint/sft_merge_checkpoints/tulu-dpo-llama3-8b-base --model-id tulu-v2-8B-dpo --openai-api-base http://localhost:8000/v1 --parallel 50
+
+## generate judgement
+python gen_judgment.py --model-list tulu-v2-8B-dpo --parallel 5
+
+## calculate scores
+python show_result.py --model-list tulu-v2-8B-dpo
+
+
+
