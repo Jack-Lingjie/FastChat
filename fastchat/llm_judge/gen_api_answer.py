@@ -114,16 +114,26 @@ if __name__ == "__main__":
         "--parallel", type=int, default=1, help="The number of concurrent API calls."
     )
     parser.add_argument("--openai-api-base", type=str, default=None)
+
+    parser.add_argument("--api-key", type=str, default="abc")
+
+    parser.add_argument("--model-id", type=str, default="llama3.1")
+
     args = parser.parse_args()
 
     if args.openai_api_base is not None:
-        openai.api_base = args.openai_api_base
+        openai.base_url = args.openai_api_base
+
+    if args.api_key is not None:
+        openai.api_key = args.api_key
 
     question_file = f"data/{args.bench_name}/question.jsonl"
     questions = load_questions(question_file, args.question_begin, args.question_end)
 
     if args.answer_file:
         answer_file = args.answer_file
+    elif args.model_id:
+        answer_file = f"data/{args.bench_name}/model_answer/{args.model_id}.jsonl"
     else:
         answer_file = f"data/{args.bench_name}/model_answer/{args.model}.jsonl"
     print(f"Output to {answer_file}")

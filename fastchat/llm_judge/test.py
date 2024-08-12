@@ -1,7 +1,8 @@
 from openai import OpenAI
 client = OpenAI(
     base_url="http://localhost:8000/v1",
-    api_key="token-abc123",
+    api_key="a",
+
 )
 
 completion = client.chat.completions.create(

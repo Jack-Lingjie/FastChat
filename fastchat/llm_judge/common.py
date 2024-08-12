@@ -13,6 +13,7 @@ from typing import Optional
 
 import openai
 import anthropic
+from gpt4 import Openai, API_INFOS
 
 from fastchat.model.model_adapter import (
     get_conversation_template,
@@ -125,6 +126,8 @@ def load_judge_prompts(prompt_file: str):
     Dict[judge_name: str -> dict]
     """
     prompts = {}
+    # CUR_DIR = os.path.dirname(os.path.abspath(__file__))
+    # prompt_file = os.path.join(CUR_DIR, prompt_file)
     with open(prompt_file) as fin:
         for line in fin:
             line = json.loads(line)
@@ -164,7 +167,9 @@ def run_judge_single(question, answer, judge, ref_answer, multi_turn=False):
     conv.append_message(conv.roles[1], None)
 
     if model in OPENAI_MODEL_LIST:
-        judgment = chat_completion_openai(model, conv, temperature=0, max_tokens=2048)
+        # judgment = chat_completion_openai(model, conv, temperature=0, max_tokens=2048)
+        judgment = chat_completion_openai_azure(model, conv, temperature=0, max_tokens=2048)
+        
     elif model in ANTHROPIC_MODEL_LIST:
         judgment = chat_completion_anthropic(
             model, conv, temperature=0, max_tokens=1024
@@ -408,18 +413,23 @@ def chat_completion_openai(model, conv, temperature, max_tokens, api_dict=None):
     if api_dict is not None:
         openai.api_base = api_dict["api_base"]
         openai.api_key = api_dict["api_key"]
+    client = openai.OpenAI(
+        api_key=openai.api_key,
+        base_url=openai.base_url
+
+    )   
     output = API_ERROR_OUTPUT
     for _ in range(API_MAX_RETRY):
         try:
             messages = conv.to_openai_api_messages()
-            response = openai.ChatCompletion.create(
+            response = client.chat.completions.create(
                 model=model,
                 messages=messages,
                 n=1,
                 temperature=temperature,
                 max_tokens=max_tokens,
             )
-            output = response["choices"][0]["message"]["content"]
+            output = response.choices[0].message.content
             break
         except openai.OpenAIError as e:
             print(type(e), e)
@@ -431,28 +441,33 @@ def chat_completion_openai(model, conv, temperature, max_tokens, api_dict=None):
 def chat_completion_openai_azure(model, conv, temperature, max_tokens, api_dict=None):
     openai.api_type = "azure"
     openai.api_version = "2023-07-01-preview"
-    if api_dict is not None:
-        openai.api_base = api_dict["api_base"]
-        openai.api_key = api_dict["api_key"]
-    else:
-        openai.api_base = os.environ["AZURE_OPENAI_ENDPOINT"]
-        openai.api_key = os.environ["AZURE_OPENAI_KEY"]
+    # if api_dict is not None:
+    #     openai.api_base = api_dict["api_base"]
+    #     openai.api_key = api_dict["api_key"]
+    # else:
+    #     openai.api_base = os.environ["AZURE_OPENAI_ENDPOINT"]
+    #     openai.api_key = os.environ["AZURE_OPENAI_KEY"]
 
     if "azure-" in model:
         model = model[6:]
 
     output = API_ERROR_OUTPUT
+    oai_client = Openai(apis=API_INFOS)
     for _ in range(API_MAX_RETRY):
         try:
             messages = conv.to_openai_api_messages()
-            response = openai.ChatCompletion.create(
-                engine=model,
-                messages=messages,
-                n=1,
-                temperature=temperature,
-                max_tokens=max_tokens,
-            )
-            output = response["choices"][0]["message"]["content"]
+            output = oai_client.get_response(
+                messages=messages, 
+                temperature=temperature, 
+                max_tokens=max_tokens)
+            # response = openai.ChatCompletion.create(
+            #     engine=model,
+            #     messages=messages,
+            #     n=1,
+            #     temperature=temperature,
+            #     max_tokens=max_tokens,
+            # )
+            # output = response["choices"][0]["message"]["content"]
             break
         except openai.error.OpenAIError as e:
             print(type(e), e)
@@ -461,7 +476,7 @@ def chat_completion_openai_azure(model, conv, temperature, max_tokens, api_dict=
             print(type(e), e)
             break
         except KeyError:
-            print(response)
+            print(output)
             break
 
     return output
