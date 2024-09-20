@@ -2,6 +2,18 @@
 set -x
 # 参数列表  
 PARAMS=(  
+    "ta_llama3_instruct_dpo_list_bsz1_trible_debug_v1"
+    "ta_llama3_instruct_dpo_list_bsz1_trible_debug_v1-1500"
+    "ta_rejected_tuluv2_dpo_2048_default_template_bsz1_acc8_v2_500"
+    "ta_rejected_tuluv2_dpo_2048_default_template_bsz1_acc8_v2_1000"
+    "ta_rejected_llama3.1_instruct_2048_default_template_v2-500"
+    "ta_rejected_llama3.1_instruct_2048_default_template_v2-1000"
+    "tulu_v2_8b_default_template_dpo_list_bsz1_trible_debug_v2"
+    "tulu_v2_8b_default_template_dpo_list_bsz1_trible_debug_v3"
+    "tulu_v2_8b_default_template_dpo_list_bsz1_trible_debug_1000"
+    "tulu_v2_8b_default_template_dpo_list_bsz1_trible_debug_1500"
+    "tulu_v2_8b_default_template_dpo_list_bsz1_trible_debug_500"
+    "tulu_v2_8b_default_template_dpo_list_bsz1_trible_debug"
     "Meta-Llama-3.1-8B-Instruct"
     "ta_llama3_instruct_dpo_list_bsz1_trible_debug_v4"
     "uf_llama3.1_instruct_dpo_2048_job"
@@ -36,6 +48,9 @@ PARAMS=(
     "tulu_2048_default_template_trible_chosen_ta_dpo_1500"
     "tulu_2048_default_template_trible_chosen_ta_dpo"
     "tulu_2048_default_template_trible_rejected_ta_dpo_1500"
+    "ta_chosen_llama3.1_instruct_dpo_2048_v2"
+    "tulu_v2_8b_default_template_dpo_list_bsz1_trible_debug_v15"
+    "tulu_v2_8b_default_template_dpo_list_bsz1_trible_debug_v15_1500"
 )  
 
 LOG_FILE="evaluation_log"  
