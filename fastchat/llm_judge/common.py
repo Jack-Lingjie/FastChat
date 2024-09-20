@@ -12,8 +12,8 @@ import time
 from typing import Optional
 
 import openai
-import anthropic
-from gpt4 import Openai, API_INFOS
+
+from gpt4o_tenant import Openai, API_INFOS
 
 from fastchat.model.model_adapter import (
     get_conversation_template,
