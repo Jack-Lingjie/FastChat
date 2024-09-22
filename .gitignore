@@ -38,3 +38,5 @@ vqa_examples
 #custom
 /data/mt_bench/model_answer
 /data/mt_bench/model_judgment
+
+fastchat/llm_judge/data/mt_bench/model_judgment/gpt-4_single.jsonl
