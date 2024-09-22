@@ -17,3 +17,5 @@ else
   python gen_answer_batch_multiturn.py --model-name ${MODEL_NAME} 
 fi 
 python gen_judgment.py --model-list ${MODEL_NAME}
+
+python show_result_output.py

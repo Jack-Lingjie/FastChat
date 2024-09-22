@@ -1,0 +1,4 @@
+执行参数: tulu_v2_8b_default_template_dpo_list_bsz1_trible_debug_v2_1500
+gen model answer tulu_v2_8b_default_template_dpo_list_bsz1_trible_debug_v2_1500 Begin
+运行时间: -28782063.95 分钟
+----------------------------------------
