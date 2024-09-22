@@ -20,17 +20,18 @@ llm = LLM(model=f"{path_dir}/{model_name}")
 print(f"model name: {model_name}")  
 print(f"model_path: {path_dir}/{model_name}")  
   
-gen_kwargs_vllm = {  
-    "max_tokens": 2048,  
-    "top_p": 0.9,  
-    "top_k": 50,  
-    "temperature": 0.0,  
-    "repetition_penalty": 1.0,  
-}  
+gen_kwargs_vllm = {
+    "max_tokens": 2048,
+    "temperature": 0.0,
+}
 tokenizer = llm.get_tokenizer()  
 if tokenizer.chat_template is None:  
     tokenizer.chat_template = template  
-    tokenizer.chat_template = tokenizer.chat_template.replace("<|eot_id|>", tokenizer.eos_token)  
+    # print(f"tokenizer.eos_token_id:{tokenizer.eos_token_id}")
+    # print(tokenizer.convert_tokens_to_ids("<|eot_id|>"))
+    # print(tokenizer.convert_tokens_to_ids("<|end_of_text|>"))
+    # tokenizer.chat_template = tokenizer.chat_template.replace("<|eot_id|>", tokenizer.eos_token)  
+    # print(tokenizer.chat_template)
     gen_kwargs_vllm['stop_token_ids'] = [tokenizer.eos_token_id, tokenizer.convert_tokens_to_ids("<|eot_id|>")]  
     print(f"tokenizer.chat_template: {tokenizer.chat_template}")  
     print("tokenizer is None, use setted template")  
@@ -51,7 +52,13 @@ def convert_to_message(example):
 questions = questions.map(convert_to_message)  
   
 # 生成第一轮输出  
-outputs = llm.generate(questions['messages'], sampling_params)  
+encoded_inputs = tokenizer.batch_encode_plus(  
+    questions['messages'],  
+    add_special_tokens=False,
+) 
+input_ids = encoded_inputs['input_ids']  
+
+outputs = llm.generate(prompt_token_ids=input_ids, sampling_params=sampling_params)
 outputs_text = [x.outputs[0].text for x in outputs]  
 token_lens = [len(x.outputs[0].token_ids) for x in outputs]  
   
@@ -74,6 +81,12 @@ questions = questions.map(second_round_messages)
   
 # 生成第二轮输出  
 outputs = llm.generate(questions['messages'], sampling_params)  
+encoded_inputs = tokenizer.batch_encode_plus(  
+    questions['messages'],  
+    add_special_tokens=False,
+) 
+input_ids = encoded_inputs['input_ids']  
+outputs = llm.generate(prompt_token_ids=input_ids, sampling_params=sampling_params)
 outputs_text = [x.outputs[0].text for x in outputs]  
 token_lens = [len(x.outputs[0].token_ids) for x in outputs]  
   
