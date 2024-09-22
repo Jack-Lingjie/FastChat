@@ -2,7 +2,7 @@
 set -x
 # 参数列表  
 PARAMS=( 
-    "uf_llama3.1_instruct_dpo_2048_trible_ta_rejected"
+    # "uf_llama3.1_instruct_dpo_2048_trible_ta_rejected"
     # "ta_chosen_tuluv2_dpo_2048_default_template_bsz1_acc8_v2"
     # "uf_llama3.1_instruct_dpo_2048_trible"
     # "uf_llama3.1_instruct_dpo_2048_trible_ta_chosen"
@@ -11,7 +11,7 @@ PARAMS=(
     # "ta_llama3_instruct_dpo_list_bsz1_trible_debug_v10"
     # "ta_llama3_instruct_dpo_list_bsz1_trible_debug_v11"
     # "ta_llama3_instruct_dpo_list_bsz1_trible_debug_v15"
-    # "ta_llama3_instruct_dpo_list_bsz1_trible_debug_v15_1500"
+    "ta_llama3_instruct_dpo_list_bsz1_trible_debug_v15_1500"
     # "tulu_v2_8b_default_template_dpo_list_bsz1_trible_debug_v2_1500"
     # "tulu_v2_8b_default_template_dpo_list_bsz1_trible_debug_v14"
     # "tulu_v2_8b_default_template_dpo_list_bsz1_trible_debug_v11"
