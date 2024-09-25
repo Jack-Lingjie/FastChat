@@ -128,3 +128,4 @@ with open(f'/mnt/lingjiejiang/textual_aesthetics/data/mtbench/{model_name}.jsonl
         json.dump(example, f)  
         f.write('\n')    
 print(f"Data saved to data/mt_bench/model_answer/{model_name}.jsonl")  
+print(f"/mnt/lingjiejiang/textual_aesthetics/data/mtbench/{model_name}.jsonl")  
