@@ -42,7 +42,7 @@ for PARAM in "${PARAMS[@]}"; do
   start_time=$(date +%s)
 
   echo "执行参数: $PARAM" | tee -a $LOG_FILE  
-  bash llm_judge/eval_script/gen_res.sh$PARAM | tee -a $LOG_FILE  
+  bash llm_judge/eval_script/gen_res.sh $PARAM | tee -a $LOG_FILE  
 
     # 计算运行时间  
   elapsed_time=$((end_time - start_time))  
