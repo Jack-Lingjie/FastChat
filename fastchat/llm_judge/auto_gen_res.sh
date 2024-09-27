@@ -2,7 +2,10 @@
 set -x
 # 参数列表  
 PARAMS=( 
-    "Meta-Llama-3.1-70B-Instruct"
+    "ta_llama3_instruct_70B_zero3_dpo_list_bsz1_trible_debug_v1"
+    "ta_llama3_instruct_70B_zero3_dpo_list_bsz1_trible_debug_v1_1500"
+    "ta_llama3_instruct_70B_zero3_dpo_list_bsz1_trible_debug_v1_1000"  
+    # "Meta-Llama-3.1-70B-Instruct"
     # "Qwen2-7B-Instruct"
     # "Qwen2-72B-Instruct"
     # "Phi-3-medium-4k-instruct"
