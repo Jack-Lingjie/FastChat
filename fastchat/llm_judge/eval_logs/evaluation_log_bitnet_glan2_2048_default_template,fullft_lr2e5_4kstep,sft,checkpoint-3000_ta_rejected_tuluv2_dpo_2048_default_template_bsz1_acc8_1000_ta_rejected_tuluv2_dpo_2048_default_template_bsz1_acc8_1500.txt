@@ -1,0 +1,5 @@
+执行参数: bitnet_glan2_2048_default_template, fullft_lr2e5_4kstep, sft, checkpoint-3000
+bitnet_glan2_2048_default_template_sft_checkpoint-3000
+gen model answer bitnet_glan2_2048_default_template_sft_checkpoint-3000 Begin
+model name: bitnet_glan2_2048_default_template_sft_checkpoint-3000
+model_path: /mnt/lingjiejiang/textual_aesthetics/exp/saves/bitnet_glan2_2048_default_template/fullft_lr2e5_4kstep/sft/checkpoint-3000/bitnet_glan2_2048_default_template_sft_checkpoint-3000
