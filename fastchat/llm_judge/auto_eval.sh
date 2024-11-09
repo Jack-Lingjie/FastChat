@@ -2,8 +2,10 @@
 set -x
 # 参数列表  
 PARAMS=( 
-    "ta_rejected_tuluv2_dpo_2048_default_template_bsz1_acc8_1000"
-    "ta_rejected_tuluv2_dpo_2048_default_template_bsz1_acc8_1500"
+    # "ta_rejected_tuluv2_dpo_2048_default_template_bsz1_acc8_1000"
+    # "ta_rejected_tuluv2_dpo_2048_default_template_bsz1_acc8_1500"
+    # "gemma-2-2b"
+    "gemma-2-2b-it"
   # "ta_rejected_noneed_length_llama3.1_instruct_2048_default_template_v2"
   # "ta_rejected_noneed_length_llama3.1_instruct_2048_default_template_v2_1500"
   # "ta_rejected_llama3.1_instruct_dpo_2048_default_template-1500"

@@ -2,7 +2,8 @@
 set -x
 # 参数列表  
 PARAMS=( 
-    "bitnet_glanchat_v2.1_8b_2048_default_template,fullft_lr5e6_e3,sft,checkpoint-3500"
+    # "bitnet_glanchat_v2.1_8b_2048_default_template,fullft_lr5e6_e3,sft,checkpoint-3500"
+    "bitnet_magpie_dpo_v0.1_2048_default_template_dpo_glan1.5_ckpt3500,fullft,dpo,checkpoint-3059"
     # "bitnet_glan2_2048_default_template,fullft_lr2e5_4kstep,sft,checkpoint-3000"
     # "ta_rejected_tuluv2_dpo_2048_default_template_bsz1_acc8_1000"
     # "ta_rejected_tuluv2_dpo_2048_default_template_bsz1_acc8_1500"
