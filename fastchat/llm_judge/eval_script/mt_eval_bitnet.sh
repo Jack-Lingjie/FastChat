@@ -16,7 +16,7 @@ CHECKPOINT=${4:-$DEFAULT_CHECKPOINT}
 # 拼接新的 model-path  
 MODEL_PATH="/mnt/lingjiejiang/textual_aesthetics/exp/saves/${MODEL_NAME}/${HYPERPARAMETER}/${STAGE}/${CHECKPOINT}"  
 
-SAVE_MODEL_ID="${MODEL_NAME}_${STAGE}_${CHECKPOINT}"
+SAVE_MODEL_ID="${MODEL_NAME}_${HYPERPARAMETER}_${STAGE}_${CHECKPOINT}"
 echo $SAVE_MODEL_ID
 # gen asnwer
 # 检查文件是否存在  
