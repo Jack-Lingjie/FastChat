@@ -2,9 +2,9 @@
 set -x
 # 参数列表  
 PARAMS=( 
-  "bitnet_glan1.5_2048_default_template,lr2e5_e2_bsz128,sft,checkpoint-7332"
-  "bitnet_glan1.5_2048_default_template,lr5e5_e2_bsz128,sft,checkpoint-7332"
-  "bitnet_glan1.6_2048_default_template,lr3e5_e2_bsz128,sft,checkpoint-8634"
+  # "bitnet_glan1.5_2048_default_template,lr2e5_e2_bsz128,sft,checkpoint-7332"
+  # "bitnet_glan1.5_2048_default_template,lr5e5_e2_bsz128,sft,checkpoint-7332"
+  # "bitnet_glan1.6_2048_default_template,lr3e5_e2_bsz128,sft,checkpoint-8634"
   "bitnet_glan1.6_2048_default_template,lr5e5_e2_bsz128,sft,checkpoint-8634"
 
   # "bitnet_glan1.5_2048_default_template,lr5e6_2kstep_bsz128,sft,checkpoint-8000"
