@@ -1,0 +1,5 @@
+执行参数: bitnet_glan1.6_2048_default_template, lr2e5_e2_bsz2k, sft, checkpoint-538
+bitnet_glan1.6_2048_default_template_lr2e5_e2_bsz2k_sft_checkpoint-538
+gen model answer bitnet_glan1.6_2048_default_template_lr2e5_e2_bsz2k_sft_checkpoint-538 Begin
+model name: bitnet_glan1.6_2048_default_template_lr2e5_e2_bsz2k_sft_checkpoint-538
+model_path: /mnt/lingjiejiang/textual_aesthetics/exp/saves/bitnet_glan1.6_2048_default_template/lr2e5_e2_bsz2k/sft/checkpoint-538/bitnet_glan1.6_2048_default_template_lr2e5_e2_bsz2k_sft_checkpoint-538
