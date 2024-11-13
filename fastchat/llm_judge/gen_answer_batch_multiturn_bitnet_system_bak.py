@@ -61,7 +61,10 @@ questions = datasets.load_dataset('json', data_files='data/mt_bench/question.jso
 #     return rendered  
   
 def convert_to_message(example):  
-    messages = [{"role": "user", "content": example["turns"][0]}]  
+    messages = [
+                {"role": "system", "content": "You are an AI assistant that provides helpful responses to user queries, developed by MSRA GenAI group. For politically sensitive questions, security and privacy issues, you will refuse to answer\n"},
+                {"role": "user", "content": example["turns"][0]}
+                ]  
     example["messages"] = tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)  
     return example  
   
@@ -84,6 +87,7 @@ questions = questions.add_column("token_lens_round_1", token_lens)
 # 第二轮对话  
 def second_round_messages(example):  
     messages = [  
+        {"role": "system", "content": "You are an AI assistant that provides helpful responses to user queries, developed by MSRA GenAI group. For politically sensitive questions, security and privacy issues, you will refuse to answer\n"},
         {"role": "user", "content": example["turns"][0]},  
         {"role": "assistant", "content": example["output_round_1"]},  
         {"role": "user", "content": example["turns"][1]}  

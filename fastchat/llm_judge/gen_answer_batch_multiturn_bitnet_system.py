@@ -61,12 +61,19 @@ questions = datasets.load_dataset('json', data_files='data/mt_bench/question.jso
 #     return rendered  
   
 def convert_to_message(example):  
-    messages = [{"role": "user", "content": example["turns"][0]}]  
+    messages = [
+                {"role": "system", "content": "You are an AI assistant that provides helpful responses to user queries, developed by MSRA GenAI group. For politically sensitive questions, security and privacy issues, you will refuse to answer\n"},
+                {"role": "user", "content": example["turns"][0]}
+                ]  
     example["messages"] = tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)  
     return example  
   
 questions = questions.map(convert_to_message)  
-  
+
+with open("log_prompt_1.txt", "w") as f:
+    for example in questions:
+        f.write(example["messages"] + "\n")
+
 # 生成第一轮输出  
 outputs_text = []  
 token_lens = []  
@@ -84,6 +91,7 @@ questions = questions.add_column("token_lens_round_1", token_lens)
 # 第二轮对话  
 def second_round_messages(example):  
     messages = [  
+        {"role": "system", "content": "You are an AI assistant that provides helpful responses to user queries, developed by MSRA GenAI group. For politically sensitive questions, security and privacy issues, you will refuse to answer\n"},
         {"role": "user", "content": example["turns"][0]},  
         {"role": "assistant", "content": example["output_round_1"]},  
         {"role": "user", "content": example["turns"][1]}  
@@ -101,7 +109,11 @@ for example in tqdm(questions):
     response = generate_response(example['messages'])  
     outputs_text.append(response)  
     token_lens.append(len(tokenizer(response)['input_ids']))  
-  
+
+for example in questions:
+    with open("log_prompt_2.txt", "w") as f:
+        f.write(example["messages"] + "\n")
+          
 # 移除现有的 'messages' 列并添加新的列  
 questions = questions.remove_columns(["messages"])  
 questions = questions.add_column("output_round_2", outputs_text)  

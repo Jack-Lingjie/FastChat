@@ -1,0 +1,5 @@
+执行参数: bitnet_glan1.6_2048_default_template, lr2e5_e3_bsz2k_fx, sft, checkpoint-807
+bitnet_glan1.6_2048_default_template_lr2e5_e3_bsz2k_fx_sft_checkpoint-807
+gen model answer bitnet_glan1.6_2048_default_template_lr2e5_e3_bsz2k_fx_sft_checkpoint-807 Begin
+model name: bitnet_glan1.6_2048_default_template_lr2e5_e3_bsz2k_fx_sft_checkpoint-807
+model_path: /mnt/lingjiejiang/textual_aesthetics/exp/saves/bitnet_glan1.6_2048_default_template/lr2e5_e3_bsz2k_fx/sft/checkpoint-807/bitnet_glan1.6_2048_default_template_lr2e5_e3_bsz2k_fx_sft_checkpoint-807
