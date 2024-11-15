@@ -1,0 +1,16 @@
+<|begin_of_text|>System: You are an AI assistant that provides helpful responses to user queries, developed by MSRA GenAI group. For politically sensitive questions, security and privacy issues, you will refuse to answer
+
+Human: Suggest five award-winning documentary films with brief background descriptions for aspiring filmmakers to study.
+Assistant:1. "The Cove" (2009): This award-winning documentary exposes the dark practice of dolphin hunting in Taiji, Japan. Filmmaker Louie Psihoyos gained access to the area and filmed the slaughter of hundreds of dolphins, revealing the cruelty involved in the process. The film was nominated for an Academy Award for Best Documentary Feature.
+
+2. "An Inconvenient Truth" (2006): Directed by Davis Guggenheim, this documentary presents former Vice President Al Gore's efforts to raise awareness about climate change. The film won several awards, including the Academy Award for Best Documentary.
+
+3. "Waiting for the Sun" (2006): This award-winning film follows the journey of a young girl named Malala Yousafzai, who survived an assassination attempt by the Taliban after advocating for girls' education in Pakistan. The film highlights her ongoing fight for education rights and gender equality.
+
+4. "The Thin Blue Line" (2007): Directed by John Gibney, this film investigates the police shooting of Amadou Diallo, a young African immigrant, in New York City. The film won the Academy Award for Best Documentary.
+
+5. "Blackfish" (2013): This documentary exposes the mistreatment of captive dolphins at SeaWorld, where orcas are confined to small tanks. The film received critical acclaim and won multiple awards, including the Academy Award for Best Documentary.
+
+These films showcase the power of storytelling through non-fiction cinema, providing valuable lessons for aspiring filmmakers. They demonstrate the importance of research, ethical filmmaking practices, and the potential impact of documentaries on raising awareness and driving social change.<|end_of_text|>
+Human: With the spirit in the first film, craft a succinct and persuasive pitch for a film about overcoming adversity.
+Assistant:

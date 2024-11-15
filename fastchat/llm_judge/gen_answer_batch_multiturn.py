@@ -15,7 +15,7 @@ model_name = args.model_name
   
 template = "{% if messages[0]['role'] == 'system' %}{% set system_message = messages[0]['content'] %}{% endif %}{% if system_message is defined %}{{ system_message + '\n' }}{% endif %}{% for message in messages %}{% set content = message['content'] %}{% if message['role'] == 'user' %}{{ 'Human: ' + content + '\nAssistant:' }}{% elif message['role'] == 'assistant' %}{{ content + '<|end_of_text|>' + '\n' }}{% endif %}{% endfor %}"
  
-llm = LLM(model=f"{path_dir}/{model_name}")  
+llm = LLM(model=f"{path_dir}/{model_name}", trust_remote_code=True)  
   
 print(f"model name: {model_name}")  
 print(f"model_path: {path_dir}/{model_name}")  
